@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:yazilimingilizcesi/screens/profile-screen/profile_screen.dart';
 import 'screens/home_screen.dart';
-import 'screens/profile_screen.dart';
 import 'widgets/bottom_navbar.dart';
 
 void main() {
@@ -14,7 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'VarelaRound', 
+      ),
       home: const MainLayout(),
     );
   }
@@ -44,8 +47,14 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Yazılım İngilizcesi")),
-      body: _pages[_selectedIndex], // Seçilen sayfa
+      appBar: AppBar(title: const Text(
+          "Yazılım İngilizcesi",
+          style: TextStyle(
+            fontFamily: 'Mitr', 
+            fontSize: 24,         
+            fontWeight: FontWeight.normal, 
+          ))),
+      body: _pages[_selectedIndex], 
       bottomNavigationBar: BottomNavbar(
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,
