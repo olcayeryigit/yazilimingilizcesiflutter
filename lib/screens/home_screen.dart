@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'words-screen/words_screen.dart';
-import 'sentences-screen/sentences_screen.dart';
-import 'texts-screen/texts_screen.dart';
+import 'login_screen.dart';
+import 'register_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,15 +25,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              Expanded(
-                child: ListView(
-                  children: [
-                    _buildSectionCard(context, "Kelimeler", Icons.code, const WordsScreen()),
-                    _buildSectionCard(context, "Cümleler", Icons.book, const SentencesScreen()),
-                    _buildSectionCard(context, "Metinler", Icons.quiz, const TextsScreen()),
-                  ],
-                ),
-              ),
+              // Diğer bölümler kaldırıldı
 
               const SizedBox(height: 20),
               const Center(
@@ -50,6 +41,10 @@ class HomeScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Giriş yap ekranına yönlendirme yapılabilir
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoginScreen()),
+                      );
                     },
                     child: const Text("Giriş Yap"),
                   ),
@@ -57,6 +52,10 @@ class HomeScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       // Üye ol ekranına yönlendirme yapılabilir
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                      );
                     },
                     child: const Text("Üye Ol"),
                   ),
@@ -65,25 +64,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildSectionCard(BuildContext context, String title, IconData icon, Widget page) {
-    return Card(
-      elevation: 3,
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: ListTile(
-        leading: Icon(icon, size: 40, color: Colors.blue),
-        title: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 18),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => page),
-          );
-        },
       ),
     );
   }
